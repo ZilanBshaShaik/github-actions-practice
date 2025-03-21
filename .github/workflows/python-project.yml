@@ -1,5 +1,6 @@
 name: Demo Python Workflow
-on: [push, workflow_dispatch]
+on: [push]
+workflow_disptach:
 jobs:
   build:
     runs-on: ubuntu-latest
