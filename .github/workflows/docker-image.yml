@@ -23,8 +23,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context:
-            push: true
-            tags: ${{ secrets.DOCKER_USERNAME }}/java-web-application:latest
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/java-web-application:latest
       - name: logout from docker hub
         run: docker logout
