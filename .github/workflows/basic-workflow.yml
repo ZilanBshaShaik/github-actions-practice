@@ -1,0 +1,36 @@
+name: Basic Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      # trunk-ignore(checkov/CKV_GHA_7)
+      name:
+        description: Person to greet
+        default: World
+        required: true
+        type: string
+      city:
+        description: Favorite City
+        default: Tupelo
+        required: true
+        type: choice
+        options:
+          - New York
+          - Seattle
+          - Tupelo
+      fav-color-blue:
+        description: Is your favorite color
+        required: true
+        type: boolean
+permissions: read-all
+
+jobs:
+  greet:
+    name: Greetings, Program!
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send greetings
+        run: |
+          echo "Hello ${{ github.event.inputs.name }}"
+          echo "Your favorite city is ${{ github.event.inputs.city }}"
+          echo "Is your favorite color blue: ${{ github.event.inputs.fav-color-blue }}"
