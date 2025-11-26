@@ -1,0 +1,17 @@
+name: Boolean input practice
+on:
+  workflow_dispatch:
+    inputs:
+      enable-feature:
+        type: boolean
+        required: true
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Feature Enabled
+        if: ${{ github.event.inputs.enable-feature == 'true' }}
+        run: echo "Feature is enabled"
+      - name: Feature Disabled
+        if: ${{ github.event.inputs.enable-feature != 'true' }}
+        run: echo "Feature is disbaled"
