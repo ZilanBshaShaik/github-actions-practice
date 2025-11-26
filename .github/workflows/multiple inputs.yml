@@ -1,0 +1,28 @@
+name: Multiple Inputs Practice
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        type: string
+        default: Guest
+        required: true
+      city:
+        type: choice
+        options:
+          - New York
+          - London
+          - Bangaloure
+        default: London
+      age:
+        type: number
+        required: true
+jobs:
+  # trunk-ignore(actionlint/syntax-check)
+  display:
+    runs-on: ubuntu-latest
+    steps:
+      # trunk-ignore(actionlint/syntax-check)
+      - run: |
+          echo "Name: ${{ github.event.inputs.name }}"
+          echo "City: ${{ github.event.inputs.city }}"
+          echo "Age: ${{ github.event.inputs.age  }}"
