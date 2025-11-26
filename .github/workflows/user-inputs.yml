@@ -1,0 +1,36 @@
+name: User Inputs Workflow
+on:
+    workflow_dispatch:
+      inputs:
+        name:
+            description: Name of the person to display
+            default: Github Actions
+            required: true
+            type: string
+        nation:
+            description: Where the person actually lives
+            default: India
+            required: true
+            type: choice
+            options:
+            - India
+            - Dubai
+            - UK
+            - US
+        favorite-food-biriyani:
+            description: Is your favorite food
+            required: true
+            type: boolean 
+permissions: read-all
+
+jobs:
+    greet:
+        name: Greetings Program
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Send Greetings
+          run: |
+            echo "Hi, ${{ github.event.inputs.name }}"
+            echo "Your located in: ${{ github.event.inputs.nation }}"
+            echo "Is your favorite food: ${{ github.event.inputs.favorite-food-biriyani }}"
