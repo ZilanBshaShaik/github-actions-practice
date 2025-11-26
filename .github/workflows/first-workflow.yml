@@ -1,5 +1,6 @@
 name: First Github Workflow
 on: workflow_dispatch
+permissions: read-all # Always add a top-level permissions: block (use read-all unless write access is required) because GitHub defaults can grant writes and Trunk requires explicit permissions.
 jobs:
   first-jobd:
     runs-on: ubuntu-latest
