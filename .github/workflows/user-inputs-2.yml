@@ -1,0 +1,41 @@
+name: Employee Details
+
+on:
+    workflow_dispatch:
+        inputs:
+            name:
+                description: Employee Name
+                default: Github Actions
+                required: true
+                type: string
+            working-department:
+                description: Employee Dept
+                default: Developer
+                required: true
+                type: choice
+                options:
+                    - Developer
+                    - Accountant
+                    - DevOps Eng
+            company-name:
+                description: Name of the company
+                default: EDB
+                required: true
+                type: choice
+                options:
+                    - EDB
+                    - EDB AI
+                    - IBM
+permissions: read-all
+
+jobs:
+    employee:
+        name: Display the Employee Name
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Employee Name
+              run: |
+                echo "Name of the employee: ${{ github.event.inputs.name }}"
+                echo "Employee Dept: ${{ github.event.inputs.working-department }}"
+                echo "Employee company name: ${{ github.event.inputs.company-name }}"
