@@ -1,6 +1,6 @@
 name: Demo Python Workflow
 on:
- push:
+ workflow_dispatch:
  branches:
   - main
    paths-ignore:
