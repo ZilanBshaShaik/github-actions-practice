@@ -15,4 +15,5 @@ jobs:
               with:
                 script: |
                 # trunk-ignore(actionlint/action)
-                core.info("Message: ${{ github.event.inputs.message }}")
+                # trunk-ignore(actionlint/syntax-check)
+                core.info("Message: " + `${{ github.event.inputs.message }}`)
